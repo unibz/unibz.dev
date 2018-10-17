@@ -90,6 +90,7 @@ server:
         - bash-completion
         - htop
         - vim
+        - unzip
 users_groups:
     install: '1'
     groups: {  }
