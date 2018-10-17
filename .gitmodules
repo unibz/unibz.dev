@@ -1,0 +1,3 @@
+[submodule "www/www.unibz.it"]
+	path = www/www.unibz.it
+	url = git@gitlab.inf.unibz.it:SSN-webdev/www.unibz.it.git
