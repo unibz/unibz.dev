@@ -4,7 +4,7 @@ define('SS_ENVIRONMENT_TYPE', 'dev');
 
 /* Database connection */
 define('SS_DATABASE_SERVER', 'localhost');
-define('SS_DATABASE_USERNAME', 'root');
+define('SS_DATABASE_USERNAME', 'silverstripe');
 define('SS_DATABASE_PASSWORD', 'unibzPassword');
 
 /* Configure a default username and password to access the CMS on all sites in this environment. */
