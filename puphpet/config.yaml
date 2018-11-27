@@ -21,7 +21,7 @@ vagrantfile:
                 machines:
                     machine1:
                         id: unibz.dev
-                        hostname: unibz.dev
+                        hostname: unibz.test
                         network:
                             private_network: 30.0.0.33
                             forwarded_port:
@@ -185,7 +185,7 @@ apache:
         - rewrite
     vhosts:
         vhost1:
-            servername: unibz.dev
+            servername: unibz.test
             docroot: /var/www/www.unibz.it
             port: '80'
             setenvif:

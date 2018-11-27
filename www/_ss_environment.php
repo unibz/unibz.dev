@@ -15,7 +15,7 @@ define('SS_ERROR_LOG', 'silverstripe.log');
 
 // This is used by sake to know which directory points to which URL
 global $_FILE_TO_URL_MAPPING;
-$_FILE_TO_URL_MAPPING['/var/www/www.unibz.it'] = 'http://unibz.dev/';
+$_FILE_TO_URL_MAPPING['/var/www/www.unibz.it'] = 'http://unibz.test/';
 
 // These two are base URLs for api calls
 define('UNIBZ_APIURL_ENTRIES', 'https://webservices.scientificnet.org/rest-stage/entries/api/v1');
