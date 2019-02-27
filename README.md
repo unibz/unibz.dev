@@ -1,40 +1,54 @@
 
-# unibz.dev on VM with php 5.6 / Ubuntu 14.04
+# unibz.dev on VM with php 5.6 / Ubuntu 16.04
+
+This repo is a development environment VM to code the unibz's Silverstripe CMS. On Silverstripe Platform we run PHP 7, so this box should be updated when possible.
 
 ## Installation
 
-### Requirements
+Before installing, you need [VirtualBox](https://www.virtualbox.org/) and [Vagrant](http://vagrantup.com) installed.
 
-You will need [VirtualBox >= 5.0.10](https://www.virtualbox.org/) and [Vagrant >= 1.8.1](http://vagrantup.com) running in order to use. Currently the machine is set to use 2048M of RAM. You can change this settings either on the config or with virtualbox.
-
-Clone repo and run
+Clone repo **recursively, including submodules**, then run
 
     vagrant up
 
-### Edit your hosts file
+If vagrant is able to provision your machine, you will be greeted by an ASCII art.
 
-    sudo nano /etc/hosts
+Edit your hosts file
 
-Append following line:
+    sudo vim /etc/hosts
 
-    30.0.0.33       unibz.dev m.unibz.dev
+Append the following line:
 
-Once vagrant has finished provisioning your machine, you should be able to open [http://unibz.dev](http://unibz.dev) and see a directory listing.
+    30.0.0.33 unibz.test db.unibz.test
 
-## Tools
+Get a full DB+Assets snapshot from [Silverstripe Platform](https://platform.silverstripe.com/naut/project/unibz/snapshots) and save it into `./www/`.
 
-### Email testing
+Once vagrant finished provisioning your machine, get a shell into it
 
-You can catch emails running http://30.0.0.33:8025/ before testing.
+    vagrant ssh
 
-### DB Management
+Inside the VM, cd to /var/www/www.unibz.it and run
 
-[Adminer (phpmyadmin replacement)](http://30.0.0.33/adminer/)
+    composer install
 
-***Connect via Navicat / Sequel pro***
+During installation you might be prompted to insert a token for Github to avoid capping API requests limits. If so, follow the on-screen instructions.
 
-Connect using SSH tunnel, username vagrant and SSH key generated at puphpet/files/dot/ssh/id_rsa. Password for key is also vagrant. This key is generated after your initial $ vagrant up!
+Install [sspak](https://github.com/silverstripe/sspak#manually) into the VM.
+
+Load the snapshot using sspak
+
+    sspak load /var/www/unibz*.sspak /var/www/www.unibz.it
+
+Enjoy: [http://unibz.test](http://unibz.test)
+
+## DB Management
+
+[Adminer](http://db.unibz.test) is included into the VM under `/var/www/html`. If you are not able to reach it on http://db.unibz.test, you might need to enable an additional virtual host (db.unibz.it) inside the VM in the apache2 conf under /etc/apache2/sites-enabled.
 
 ## Advanced configuration
 
-See /puphpet/config.yaml for configuration. If you edit anything run ```vagrant provision``` to provision the machine with this changes.
+See /puphpet/config.yaml for configuration. If you edit anything run ```vagrant provision``` to provision the machine with new changes.
+
+## Coding
+
+Follow instructions in the submodule doc.
